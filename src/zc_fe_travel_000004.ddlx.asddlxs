@@ -1,0 +1,39 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: { typeNamePlural: 'Travels'  }
+
+
+annotate view ZC_FE_TRAVEL_000004 with
+{
+  @UI.lineItem: [{position: 10 }]
+  TravelID;
+
+  @UI.lineItem: [{position: 20 }]
+  @UI.selectionField: [{position: 10 }]
+  AgencyID;
+
+  @UI.lineItem: [{position: 30 }]
+  @UI.selectionField: [{position: 20 }]
+  CustomerID;
+
+  @UI.lineItem: [{position: 40 }]
+  BeginDate;
+
+  @UI.lineItem: [{position: 50 }]
+  EndDate;
+
+  @UI.lineItem: [{position: 60 }]
+  BookingFee;
+
+  @UI.lineItem: [{position: 70 }]
+  TotalPrice;
+
+  @UI.lineItem: [{position: 80, criticality: 'OverallStatusCriticality'  }]
+  @UI.selectionField: [{position: 30 }]
+  @UI.textArrangement: #TEXT_ONLY
+  OverallStatus;
+  
+  
+  @UI.lineItem: [{position: 90 }]
+  LocalLastChangedAt;
+
+}
