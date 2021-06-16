@@ -2,43 +2,43 @@
 @Metadata.allowExtensions: true
 @EndUserText.label: 'CDS View forBooking'
 define view entity ZI_FE_BOOKING_000004
-  as select from ZFE_ABOOK_000004
-  association to parent ZI_FE_Travel_000004 as _Travel on $projection.TravelUUID = _Travel.TravelUUID
-  association [1..1] to zi_fe_conn_000004 as _Connection on $projection.CarrierID = _Connection.AirlineID and $projection.ConnectionID = _Connection.ConnectionID
-  association [1..1] to zi_fe_flig_000004 as _Flight on $projection.CarrierID = _Flight.AirlineID and $projection.ConnectionID = _Flight.ConnectionID and $projection.FlightDate = _Flight.FlightDate
-  association [1..1] to zi_fe_carr_000004 as _Carrier on $projection.CarrierID = _Carrier.AirlineID
+  as select from zfe_abook_000004
+  association to parent ZI_FE_TRAVEL_000004 as _Travel on $projection.TravelUUID = _Travel.TravelUUID
+  association [1..1] to ZI_FE_CONN_000004 as _Connection on $projection.CarrierID = _Connection.AirlineID and $projection.ConnectionID = _Connection.ConnectionID
+  association [1..1] to ZI_FE_FLIG_000004 as _Flight on $projection.CarrierID = _Flight.AirlineID and $projection.ConnectionID = _Flight.ConnectionID and $projection.FlightDate = _Flight.FlightDate
+  association [1..1] to ZI_FE_CARR_000004 as _Carrier on $projection.CarrierID = _Carrier.AirlineID
   association [0..1] to I_Currency as _Currency on $projection.CurrencyCode = _Currency.Currency
   association [1..1] to /DMO/I_Customer as _Customer on $projection.CustomerID = _Customer.CustomerID
 {
-  key BOOKING_UUID as BookingUUID,
+  key booking_uuid as BookingUUID,
   
-  TRAVEL_UUID as TravelUUID,
+  travel_uuid as TravelUUID,
   
-  BOOKING_ID as BookingID,
+  booking_id as BookingID,
   
-  BOOKING_DATE as BookingDate,
+  booking_date as BookingDate,
   
-  CUSTOMER_ID as CustomerID,
+  customer_id as CustomerID,
   
-  CARRIER_ID as CarrierID,
+  carrier_id as CarrierID,
   
-  CONNECTION_ID as ConnectionID,
+  connection_id as ConnectionID,
   
-  FLIGHT_DATE as FlightDate,
+  flight_date as FlightDate,
   
   @Semantics.amount.currencyCode: 'CurrencyCode'
-  FLIGHT_PRICE as FlightPrice,
+  flight_price as FlightPrice,
   
-  CURRENCY_CODE as CurrencyCode,
+  currency_code as CurrencyCode,
   
   @Semantics.user.createdBy: true
-  CREATED_BY as CreatedBy,
+  created_by as CreatedBy,
   
   @Semantics.user.lastChangedBy: true
-  LAST_CHANGED_BY as LastChangedBy,
+  last_changed_by as LastChangedBy,
   
   @Semantics.systemDateTime.localInstanceLastChangedAt: true
-  LOCAL_LAST_CHANGED_AT as LocalLastChangedAt,
+  local_last_changed_at as LocalLastChangedAt,
   
   _Travel,
   
